@@ -27,8 +27,11 @@ const Login: React.FC<Props> = ({navigation:{navigate}}) =>{
 		<AppInput placeholder="Email" />
 		<AppInput placeholder="Password" />
 	    </View>
-	    <TouchableOpacity style={{alignItems: 'center',}}>
-	    	<Text>Sign Up</Text>
+	    <TouchableOpacity onPress={()=>{}} style={{padding:20,marginVertical:10,borderRadius:10,backgroundcolor:"#f6880e",shadowOffset:{{width:0,height:10,shadowOpacity: 0,shadowRadius: 10,}}}}>
+	    	<Text style={{color:"#222",textAlign:"center",fontSize:20}}>Sign In</Text>
+	    </TouchableOpacity>
+	    <TouchableOpacity onPress={()=>{navigate("Signup")}} style={{padding:20,marginVertical:30,}}>
+	    	<Text style={{color:'#222',fontSize:20,textAlign:'center'}}>Create a New Account</Text>
 	    </TouchableOpacity>
         </SafeAreaView>
         </>
