@@ -1,12 +1,23 @@
+import { Image, Text } from "@rneui/themed";
 import React from "react";
-import { SafeAreaView,View, TouchableOpacity,Text,Image } from "react-native";
-import AppInput from "../components/appinput";
+import { SafeAreaView,View } from "react-native";
+import AppInput from '../components/appinput'
+import {TouchableOpacity} from "react-native"
+import {useState} from 'react'
+
 interface Props {
     navigation: {
       navigate: (screen: string) => void;
     };
   }
+
 const Signup: React.FC<Props> = ({navigation:{navigate}}) =>{
+const [Values,setValues] = useState({name:'',email:'',password:''})
+	const updateInputVal = [val,key] =>{
+		const value=Values;
+		value[key] = val;
+		setValues({...value})
+	}
     return(
         <>
         <SafeAreaView>
@@ -17,17 +28,20 @@ const Signup: React.FC<Props> = ({navigation:{navigate}}) =>{
                     />
                 </View>
                 
-		<Text style={{marginHorizontal:50 , fontSize:25 , color:'#f6880e',marginVertical:5,fontWeight:'bold',width:300}}>SignUp to Veto Vets</Text>
+		<Text style={{marginHorizontal:50 , fontSize:25 , color:'#f6880e',marginVertical:5,fontWeight:'bold',width:300}}>Sign Up to Veto Vets</Text>
             </View>
 	    <View style={{paddingVertical:30}}>
-	    <AppInput placeholder="Name"/>
-		<AppInput placeholder="Email" />
-		<AppInput placeholder="Password" />
+	    	<AppInput placeholder="Name" name="name"value={Values.name} updateInputval={updateInputVal}/>
+		<AppInput placeholder="Email" name="eamil"value={Values.email} updateInputval={updateInputVal}/>
+		<AppInput placeholder="Password"name="password"Values = {Values.password} updateInputval={updateInputVal}/>
 	    </View>
-	    <TouchableOpacity onPress={()=>{}} style={{padding:20,marginVertical:10,borderRadius:10,backgroundColor:"#f6880e"}}>
+	    <View style={{paddingHorizontal: 20,}}>
+	    	<TouchableOpacity onPress={()=>{}} style={{padding:20,marginVertical:5,borderRadius:10,backgroundColor:"#f6880e",}}>
 	    	<Text style={{color:"#222",textAlign:"center",fontSize:20}}>Sign Up</Text>
-	    </TouchableOpacity>
-	    <TouchableOpacity onPress={()=>{navigate("Login")}} style={{padding:20,marginVertical:5,}}>
+
+		</TouchableOpacity>
+	     </View>
+	    <TouchableOpacity onPress={()=>{navigate("Login")}} style={{padding:20,marginVertical:1,}}>
 	    	<Text style={{color:'#222',fontSize:20,textAlign:'center'}}>Already have a Account</Text>
 	    </TouchableOpacity>
         </SafeAreaView>
