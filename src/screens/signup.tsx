@@ -13,11 +13,6 @@ interface Props {
 
 const Signup: React.FC<Props> = ({navigation:{navigate}}) =>{
 const [Values,setValues] = useState({name:'',email:'',password:''})
-	const updateInputVal = [val,key] =>{
-		const value=Values;
-		value[key] = val;
-		setValues({...value})
-	}
     return(
         <>
         <SafeAreaView>
@@ -31,9 +26,9 @@ const [Values,setValues] = useState({name:'',email:'',password:''})
 		<Text style={{marginHorizontal:50 , fontSize:25 , color:'#f6880e',marginVertical:5,fontWeight:'bold',width:300}}>Sign Up to Veto Vets</Text>
             </View>
 	    <View style={{paddingVertical:30}}>
-	    	<AppInput placeholder="Name" name="name"value={Values.name} updateInputval={updateInputVal}/>
-		<AppInput placeholder="Email" name="eamil"value={Values.email} updateInputval={updateInputVal}/>
-		<AppInput placeholder="Password"name="password"Values = {Values.password} updateInputval={updateInputVal}/>
+	    	<AppInput placeholder="Name" name="name"/>
+		<AppInput placeholder="Email" name="email"/>
+		<AppInput placeholder="Password"name="password"/>
 	    </View>
 	    <View style={{paddingHorizontal: 20,}}>
 	    	<TouchableOpacity onPress={()=>{}} style={{padding:20,marginVertical:5,borderRadius:10,backgroundColor:"#f6880e",}}>
